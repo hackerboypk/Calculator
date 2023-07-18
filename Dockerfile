@@ -1,4 +1,5 @@
-FROM openjdk:11
-MAINTAINER pk
-COPY target/Calculator-1.0-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM tomcat:latest
+LABEL maintainer="Pawan Kahurke"
+ADD ./target/Calculator-1.0-SNAPSHOT.jar /usr/local/tomcat/webapps/
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
