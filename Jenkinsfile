@@ -18,7 +18,7 @@ pipeline {
            steps {
               
                 sh 'docker build -t calculator:latest .' 
-                sh 'docker tag calculator hackerboypk/calculator:latest'
+                sh 'docker tag calculator hackerboypk/calculator:$BUILD_NUMBER'
                 
                
           }
@@ -28,7 +28,7 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-          sh  'docker push hackerboypk/calculator:latest'
+          sh  'docker push hackerboypk/calculator:$BUILD_NUMBER'
          
         }
                   
